@@ -1,0 +1,92 @@
+body, dd, dl, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, ol, p, select, td, textarea, th, ul {
+  margin: 0;
+  padding: 0
+}
+
+body {
+  font: 12px SimSun, "Arial Narrow", HELVETICA;
+  background: #fff;
+  -webkit-text-size-adjust: 100%
+}
+
+a {
+  color: #172c45;
+  text-decoration: none
+}
+
+a:hover {
+  color: #cd0200;
+  text-decoration: underline
+}
+
+em {
+  font-style: normal
+}
+
+li {
+  list-style: none
+}
+
+img {
+  border: 0;
+  vertical-align: middle
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+p {
+  word-wrap: break-word
+}
+
+/* 常用样式 */
+
+.ind {
+  text-indent: 2em
+}
+
+.ind10 {
+  text-indent: 10px
+}
+
+.noborder {
+  border: 0
+}
+
+.Q-red a, a.Q-red {
+  color: #bd0a01 !important
+}
+
+.Q-black a, a.Q-black {
+  color: #000 !important
+}
+
+.Q-bold {
+  font-weight: 700 !important
+}
+
+.Q-pList ul:after, .Q-pList:after, .Q-tList ol:after, .Q-tList ul:after, .Q-tList:after, .Q-tpList ul:after, .Q-tpList:after, .Q-tpWrap:after, .bd:after, .cf:after, .ft:after, .hd:after, .layout:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+.Q-pList, .Q-pList ul, .Q-tList, .Q-tList ol, .Q-tList ul, .Q-tpList, .Q-tpList ul, .Q-tpWrap, .bd, .cf, .ft, .hd, .layout {
+  *zoom: 1
+}
+
+.chief, .fl, .layout .fl {
+  float: left;
+  display: inline
+}
+
+.extra, .fr, .layout .fr {
+  float: right;
+  display: inline
+}
+
+.fn {
+  font-weight: 700
+}
