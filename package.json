@@ -1,6 +1,7 @@
 {
   "name": "v3-admin-vite",
   "version": "3.3.3",
+  "homepage": ".",
   "scripts": {
     "dev": "vite",
     "build:stage": "vue-tsc --noEmit && vite build --mode staging",
