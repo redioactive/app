@@ -29,7 +29,7 @@ export const useUserStore = defineStore("user", () => {
         username: loginData.username,
         password: loginData.password,
         // 暂时用不到code
-        // code: loginData.code
+        code: loginData.code
       })
         .then((res) => {
           setToken(res.data.token)

@@ -30,12 +30,12 @@ export default (configEnv: ConfigEnv): UserConfigExport =>{
     strictPort: false,
     /** 接口代理 */
     proxy: {
-      "/vite/f1": {
-        target: " https://mock.presstime.cn/mock/642451bab5b2340b4ad03db6/vite/f1",
+      "/do": {
+        target: "https://mock.presstime.cn/mock/642451bab5b2340b4ad03db6/do",
         ws: true,
         /** 是否允许跨域 */
         changeOrigin: true,
-        rewrite:(path) => path.replace("/vite/f1","")
+        rewrite:(path) => path.replace("/do","")
       }
       }
     }

@@ -5,7 +5,7 @@ import { useUserStore } from "@/store/modules/user";
 import { User, Lock, Key, Picture, Loading } from "@element-plus/icons-vue";
 import ThemeSwitch from "@/components/ThemeSwitch/index.vue";
 import { type FormInstance, FormRules } from "element-plus";
-
+import { getLoginCodeApi } from "@/api/login";
 import { type ILoginRequestData } from "@/api/login/types/login";
 
 const router = useRouter();
@@ -54,6 +54,7 @@ const handleLogin = () => {
           router.push({ path: "/" });
         })
         .catch(() => {
+          createCode();
           loginForm.password = "";
         })
         .finally(() => {
@@ -64,6 +65,19 @@ const handleLogin = () => {
     }
   });
 };
+/** 创建验证码 */
+const createCode = () => {
+  // 先清空验证码的输入
+  loginForm.code = "";
+  // 获取验证码
+  codeUrl.value = "";
+  getLoginCodeApi().then((res) => {
+    codeUrl.value = res.data;
+  });
+};
+
+/** 初始化验证码 */
+createCode();
 </script>
 
 <template>
@@ -101,6 +115,28 @@ const handleLogin = () => {
               show-password
             />
           </el-form-item>
+          <el-form-item prop="code">
+            <el-input
+              v-model.trim="loginForm.code"
+              placeholder="验证码"
+              type="text"
+              tabindex="3"
+              :prefix-icon="Key"
+              maxlength="7"
+              size="large"
+            >
+              <template #append>
+                <el-image :src="codeUrl" @click="createCode" draggable="false">
+                  <template #placeholder>
+                    <el-icon><Picture /></el-icon>
+                  </template>
+                  <template #error>
+                    <el-icon><Loading /></el-icon>
+                  </template>
+                </el-image>
+              </template>
+            </el-input>
+          </el-form-item>
           <el-button
             :loading="loading"
             type="primary"
@@ -115,15 +151,13 @@ const handleLogin = () => {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 100%;
-  background: url("@/assets/views_images/tianjin-2185510_1920.jpg") no-repeat;
-  background-size: cover;
   .theme-switch {
     position: fixed;
     top: 5%;
@@ -133,7 +167,7 @@ const handleLogin = () => {
   .login-card {
     width: 480px;
     border-radius: 20px;
-    box-shadow: 0 0 1px #dcdfe6;
+    box-shadow: 0 0 10px #dcdfe6;
     background-color: #fff;
     overflow: hidden;
     .title {
