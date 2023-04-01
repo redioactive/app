@@ -3,7 +3,7 @@ import store from "@/store"
 import { defineStore } from "pinia"
 import { usePermissionStore } from "./permission"
 import { useTagsViewStore } from "./tags-view"
-import { getToken, removeToken, setToken } from "@/utils/cache/cookie"
+import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import router, { resetRouter } from "@/router"
 import { loginApi, getUserInfoApi } from "@/api/login"
 import { type ILoginRequestData } from "@/api/login/types/login"
@@ -28,7 +28,6 @@ export const useUserStore = defineStore("user", () => {
       loginApi({
         username: loginData.username,
         password: loginData.password,
-        // 暂时用不到code
         code: loginData.code
       })
         .then((res) => {

@@ -2,7 +2,14 @@
 import { computed } from "vue";
 import { useAppStore, DeviceType } from "@/store/modules/app";
 import { useSettingsStore } from "@/store/modules/settings";
-import { AppMain, NavigationBar, Sidebar } from "./components";
+import {
+  AppMain,
+  NavigationBar,
+  Settings,
+  Sidebar,
+  TagsView,
+  RightPanel,
+} from "./components";
 import useResize from "./hooks/useResize";
 
 const appStore = useAppStore();

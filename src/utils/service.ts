@@ -2,7 +2,7 @@ import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios"
 import { useUserStoreHook } from "@/store/modules/user"
 import { ElMessage } from "element-plus"
 import { get } from "lodash-es"
-import { getToken } from "./cache/cookie"
+import { getToken } from "./cache/cookies"
 
 /** 创建请求实例 */
 function createService() {

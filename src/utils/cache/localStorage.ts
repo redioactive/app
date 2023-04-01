@@ -1,6 +1,6 @@
 /** 统一处理 localStorage */
 
-import CacheKey from "@/constants/cacheKeys"
+import CacheKey from "@/constants/cacheKey"
 import { type ThemeName } from "@/hooks/useTheme"
 
 export const getSidebarStatus = () => {
