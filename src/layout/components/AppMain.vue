@@ -5,7 +5,6 @@ import { useTagsViewStore } from "@/store/modules/tags-view";
 
 const route = useRoute();
 const tagsViewStore = useTagsViewStore();
-
 const key = computed(() => {
   return route.path;
 });

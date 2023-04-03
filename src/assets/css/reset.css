@@ -4,7 +4,7 @@ body, dd, dl, fieldset, form, h1, h2, h3, h4, h5, h6, input, legend, ol, p, sele
 }
 
 body {
-  font: 12px SimSun, "Arial Narrow", HELVETICA;
+  font: 12px ;
   background: #fff;
   -webkit-text-size-adjust: 100%
 }
@@ -14,17 +14,13 @@ a {
   text-decoration: none
 }
 
-a:hover {
-  color: #cd0200;
-  text-decoration: underline
-}
 
 em {
   font-style: normal
 }
 
 li {
-  list-style: none
+  list-style-type: none
 }
 
 img {

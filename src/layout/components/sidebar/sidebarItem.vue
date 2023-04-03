@@ -85,6 +85,7 @@ const resolvePath = (routePath: string) => {
             v-if="theOnlyOneChild.meta.svgIcon"
             :name="theOnlyOneChild.meta.svgIcon"
           />
+
           <component
             v-else-if="theOnlyOneChild.meta.elIcon"
             :is="theOnlyOneChild.meta.elIcon"
