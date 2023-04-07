@@ -3,7 +3,7 @@ import store from "@/store"
 import { defineStore } from "pinia"
 import { usePermissionStore } from "./permission"
 import { useTagsViewStore } from "./tags-view"
-import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
+import { getToken, removeToken, setToken } from "@/utils/cache/cookie"
 import router, { resetRouter } from "@/router"
 import { loginApi, getUserInfoApi } from "@/api/login"
 import { type ILoginRequestData } from "@/api/login/types/login"
@@ -21,7 +21,7 @@ export const useUserStore = defineStore("user", () => {
   /** 设置角色数组 */
   const setRoles = (value: string[]) => {
     roles.value = value
-  }
+  } 
   /** 登录 */
   const login = (loginData: ILoginRequestData) => {
     return new Promise((resolve, reject) => {
@@ -34,6 +34,7 @@ export const useUserStore = defineStore("user", () => {
           setToken(res.data.token)
           token.value = res.data.token
           resolve(true)
+          
         })
         .catch((error) => {
           reject(error)
@@ -54,6 +55,7 @@ export const useUserStore = defineStore("user", () => {
             // 塞入一个没有任何作用的默认角色，不然路由守卫逻辑会无限循环
             roles.value = asyncRouteSettings.defaultRoles
           }
+          
           resolve(res)
         })
         .catch((error) => {

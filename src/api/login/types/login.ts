@@ -4,7 +4,7 @@ export interface ILoginRequestData {
   /** 密码 */
   password: string
   /** 验证码 */
-  code:string
+  code: string
 }
 
 export type LoginCodeResponseData = IApiResponseData<string>

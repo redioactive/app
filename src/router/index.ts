@@ -53,7 +53,7 @@ export const constantRoutes: RouteRecordRaw[] = [
           svgIcon: "dashboard",
           affix: true
         }
-      }
+      },
     ]
   },
 ]
