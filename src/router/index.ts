@@ -54,8 +54,71 @@ export const constantRoutes: RouteRecordRaw[] = [
           affix: true
         }
       },
+    ],
+  },
+  {
+    path: "/audit",
+    component: Layout,
+    redirect: "/audit",
+    meta: {
+      title: "审核中心",
+      svgIcon:"audit"
+    },
+    children: [
+      {
+        path: 'auth',
+        component: () => import("@/views/audit-center/Store/index.vue"),
+        name: "auth",
+        meta: {
+          title: "商铺审核",
+          svgIcon: "Store",
+          affix:false,
+        }
+      },
+      {
+        path: "commodity",
+        component: () => import("@/views/audit-center/commodity/index.vue"),
+        name: "commodity",
+        meta: {
+          title: "商品审核",
+          svgIcon: "commodity",
+          affix:false
+        }
+      }
     ]
   },
+  {
+    path: "/finance",
+    component: Layout,
+    redirect: "/finance",
+    meta: {
+      title: "财务管理",
+      svgIcon: "finance",
+      affix:false,
+    },
+    children: [
+      {
+        path: "appWithdrawal",
+        component: () => import("@/views/financialManagement/appWithdrawal/index.vue"),
+        name:"appWithdrawal",
+        meta: {
+          title: "提现审批",
+          svgIcon: "audit",
+          affix:false
+        }
+      },
+      {
+        path: "withdrawalRecord",
+        component: () => import("@/views/financialManagement/withdrawalRecord/index.vue"),
+        name:"withdrawalRecord",
+        meta: {
+          title: "提现记录",
+          svgIcon: "withdrawalRecord",
+          affix:false
+        }
+      }
+    ]
+  }
 ]
 
 /**
@@ -120,7 +183,7 @@ export function resetRouter() {
   try {
     router.getRoutes().forEach((route) => {
       const { name, meta } = route
-      if (name && meta.roles?.length) {
+      if ( name && meta.roles?.length) {
         router.hasRoute(name) && router.removeRoute(name)
       }
     })
