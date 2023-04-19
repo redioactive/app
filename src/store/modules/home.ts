@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getHomeDataApi,getHomeInfoApi } from "@/api/home";
+import { getHomeInfoApi } from "@/api/home";
 import { HomeDataResponseData,HomeInfoResponseData  } from '@/api/home/types/home'
 
 interface IHomeState {
@@ -32,16 +32,7 @@ export const useHomeStore = defineStore('home', {
     }
   }),
   actions: {
-    async getHomeList() {
-      try {
-        const res = await getHomeDataApi();
-        this.HomeUser = res;
-        return res;
-      } catch (error) {
-        console.log(error);
-        throw error;
-      }
-    },
+   
     /** 获取用户信息Api */
     async getHomeInfo() {
       try { 

@@ -6,7 +6,7 @@ export interface IAuthRequestData {
   state: string,
   submit: string,
   modules: string,
-  anthstate: string,
+  authstate: string,
   data: string,
   anthtime:string,
   authtcons: string,

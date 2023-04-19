@@ -9,6 +9,7 @@ import svgLoader from "vite-svg-loader"
 import UnoCSS from "unocss/vite"
 import DefineOptions from "unplugin-vue-define-options/vite"
 
+
 // https://vitejs.dev/config/
 export default (configEnv: ConfigEnv): UserConfigExport =>{
   const viteEnv = loadEnv(configEnv.mode, process.cwd()) as ImportMetaEnv
@@ -19,6 +20,7 @@ export default (configEnv: ConfigEnv): UserConfigExport =>{
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src') },
     },
+    
     build: {
       /** 消除打包大小超过 500kb 警告 */
       chunkSizeWarningLimit: 2000,
@@ -78,7 +80,7 @@ export default (configEnv: ConfigEnv): UserConfigExport =>{
     /** UnoCSS */
     UnoCSS(),
     /** DefineOptions 可以更简单的注册组件名称 */
-    DefineOptions()
+    DefineOptions(),
     /** 自动按需引入 (已更改为完整引入，所以注释了) */
     // AutoImport({
     //   dts: "./types/auto-imports.d.ts",

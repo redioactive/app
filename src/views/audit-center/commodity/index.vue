@@ -2,6 +2,6 @@
 import { reactive } from "vue";
 </script>
 <template>
-  <div>商品</div>
+  <div>商品审核</div>
 </template>
 <style scoped lang="less"></style>

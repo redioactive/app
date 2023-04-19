@@ -6,8 +6,8 @@
   height: 2.5em;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  -webkit-animation: loadingAnimation 1.8s infinite ease-in-out;
-  animation: loadingAnimation 1.8s infinite ease-in-out;
+  -webkit-animation: loadingAnimation 1s infinite ease-in-out;
+  animation: loadingAnimation 1s infinite ease-in-out;
 }
 
 #app-loading {

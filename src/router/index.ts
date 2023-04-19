@@ -67,13 +67,19 @@ export const constantRoutes: RouteRecordRaw[] = [
     children: [
       {
         path: 'auth',
-        component: () => import("@/views/audit-center/Store/index.vue"),
+        component: () => import("@/views/audit-center/Shop/index.vue"),
         name: "auth",
         meta: {
           title: "商铺审核",
           svgIcon: "Store",
           affix:false,
-        }
+        },
+      },
+      {
+        path: '/detail/:id/:authstatus/:phone?/:name?/:status?/:state?/:modules?',
+        component: () => import("@/views/audit-center/Shop/detail/index.vue"),
+        name: "detail",
+        props:true,
       },
       {
         path: "commodity",

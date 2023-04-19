@@ -1,15 +1,24 @@
 <script lang="ts" setup>
 import { onMounted } from "vue";
 import { useHomeStore } from "@/store/modules/home";
+import { useRouter } from "vue-router";
+import { useAuditTable } from "@/hooks/useStatus";
 
-// HomeList
-const HomeStore = useHomeStore();
-const HomeList = HomeStore.HomeUser.HomeList;
-
+const { pendingData, failedData, passData } = useAuditTable();
+const router = useRouter();
+const ToDetail: (id: any) => void = (row: any) => {
+  router.push({
+    name: "detail",
+    params: {
+      id: 0,
+      authstatus: "待审核",
+    },
+  });
+};
 /** 用户信息数据 */
+const HomeStore = useHomeStore();
 const Info = HomeStore.Homevalues.items;
 onMounted(async () => {
-  HomeStore.getHomeList();
   HomeStore.getHomeInfo();
 });
 </script>
@@ -20,13 +29,27 @@ onMounted(async () => {
       <h3>快速查看</h3>
       <!-- HomeList -->
       <ul class="nav">
-        <li v-for="user in HomeList" :key="user.id">
-          <el-icon :color="user.color"><WarningFilled /></el-icon>
-          <p>{{ user.text }}</p>
-          <el-button :type="user.buttonType">{{ user.buttonText }}</el-button>
+        <li>
+          <el-icon><WarningFilled /></el-icon>
+          <p>一个商品待审核</p>
+          <el-button plain>立即处理</el-button>
+        </li>
+        <li>
+          <el-icon><WarningFilled /></el-icon>
+          <p>{{ pendingData.length }}个商铺待审核</p>
+          <el-button @click="ToDetail" plain>立即处理</el-button>
+        </li>
+        <li>
+          <el-icon><WarningFilled /></el-icon>
+          <p>一个提现待审核</p>
+          <el-button plain>立即处理</el-button>
+        </li>
+        <li>
+          <el-icon><WarningFilled /></el-icon>
+          <p>一个套餐已售罄，已自动下架</p>
+          <el-button plain>立即处理</el-button>
         </li>
       </ul>
-
       <!-- userInfo -->
       <ul class="userInfo">
         <li :class="`item${item.id}`" v-for="item in Info" :key="item.id">
@@ -45,8 +68,7 @@ onMounted(async () => {
   font-size: 15px;
 }
 .el-button:hover {
-  background: none;
-  color: #ff4500;
+  border: none;
 }
 .main {
   display: grid;
@@ -77,6 +99,24 @@ onMounted(async () => {
       height: 50%;
       float: left;
       box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+      p {
+        overflow: hidden;
+      }
+      &:nth-child(-n + 3):nth-child(n + 1) {
+        .el-icon {
+          color: #e34d59;
+        }
+        .el-button {
+          background-color: #e34d59;
+          color: #fff;
+        }
+      }
+      &:nth-child(n + 4) {
+        .el-button {
+          background-color: #666666;
+          color: #fff;
+        }
+      }
       .el-icon {
         margin: 6px 0;
       }
@@ -91,6 +131,9 @@ onMounted(async () => {
     }
   }
   @media (max-width: 600px) {
+    h3 {
+      min-width: 100px !important;
+    }
     .nav {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(3, 1fr);
@@ -100,25 +143,34 @@ onMounted(async () => {
       }
     }
     .userInfo {
-      .item4,
-      .item5,
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr !important;
+      grid-auto-flow: row dense;
+      justify-content: stretch;
       .item6,
+      .item5 {
+        grid-column: 4/2;
+        grid-row: 4;
+        position: absolute;
+        top: 20px;
+        left: -175px;
+        width: 180px;
+      }
+      .item6 {
+        position: absolute;
+        top: -102px;
+        right: 0;
+        left: 17px;
+        width: 173px;
+      }
       .item7 {
-        width: 4.6429rem;
-        height: 4.5714rem;
+        margin: 0 0 8px 8px;
+        width: 173px;
       }
     }
   }
-  @media (max-width: 300px) {
-    .userInfo {
-      .item4,
-      .item5,
-      .item6,
-      .item7 {
-        height: 1.4286rem;
-      }
-    }
-  }
+
   .userInfo {
     display: grid;
     grid-template-rows: repeat(3, auto);

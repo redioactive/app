@@ -5,6 +5,7 @@ import { AuthDataRespnseData } from '@/api/audit/types/auth';
 interface IauthStore {
   AuthData:AuthDataRespnseData
 }
+
 export const useAuditStore = defineStore('audit', {
   persist: {
     enabled: true,
@@ -26,7 +27,7 @@ export const useAuditStore = defineStore('audit', {
           state: "",
           submit: '',
           modules: "",
-          anthstate: "",
+          authstate: "",
           data: "",
           anthtime: '',
           authtcons: "",
